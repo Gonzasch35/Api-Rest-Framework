@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 class Category(models.Model):
@@ -12,7 +11,9 @@ class Category(models.Model):
 
 class Food(models.Model):
     name = models.CharField(max_length=200)
-    types = ArrayField(ArrayField(models.CharField(max_length=100), blank=True))
+    option_1 = models.CharField(models.CharField(max_length=100))
+    option_2 = models.CharField(models.CharField(max_length=100))
+    option_3 = models.CharField(models.CharField(max_length=100))
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

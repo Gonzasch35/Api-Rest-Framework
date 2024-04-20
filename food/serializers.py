@@ -4,7 +4,7 @@ from .models import Food, Category
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = ('id', 'name', 'types', 'category', 'created_at')
+        fields = ('id', 'name', 'option_1', 'option_2', 'option_3', 'category', 'created_at')
         read_only_fields = ('created_at', )
 
 class CategorySerializer(serializers.ModelSerializer):
