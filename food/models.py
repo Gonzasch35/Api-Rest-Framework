@@ -8,12 +8,20 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Option(models.Model):
+    name = models.CharField(max_length=200)
+    image = models.FileField(default='default_image.jpg')
+
+    def __str__(self):
+        return self.name
+
 
 class Food(models.Model):
     name = models.CharField(max_length=200)
-    option_1 = models.CharField(max_length=100, default=None)
-    option_2 = models.CharField(max_length=100, default=None)
-    option_3 = models.CharField(max_length=100, default=None)
+    image = models.FileField(default='default_image.jpg')
+    option_1 = models.ForeignKey(Option, on_delete=models.CASCADE, related_name='option_1_foods')
+    option_2 = models.ForeignKey(Option, on_delete=models.CASCADE, related_name='option_2_foods')
+    option_3 = models.ForeignKey(Option, on_delete=models.CASCADE, related_name='option_3_foods')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
