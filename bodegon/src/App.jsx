@@ -44,10 +44,10 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <div>
+      <div className='w-2/3'>
         {food?.map((foo)=>{
           return (
-            <div key={foo.id}>
+            <div className='w-56' key={foo.id}>
               <h1>{foo.name}</h1>
               <img src={foo?.image} alt="" />
               <div>
