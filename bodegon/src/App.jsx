@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
+import Home from './views/Home'
 import { getFood, getCategory, randomFood } from './redux/actions'
 axios.defaults.baseURL = 'http://127.0.0.1:8000/'
 
 function App() {
-  const [count, setCount] = useState(0)
+
   const food = useSelector(state=>state.randomFood)
   const dispatch = useDispatch()
-
+  
   useEffect(()=>{
     
       dispatch(getFood())
@@ -19,23 +19,16 @@ function App() {
       
     }, [])
     
-    const handleRandomFood = (e) =>{
-      e.preventDedault()
-      dispatch(randomFood())
-  }
 
   return (
     <>
-      <h1>Vite + React</h1>
+      {/* <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => dispatch(randomFood())}>
           Generar
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <div className='w-2/3 flex'>
+      <div className='w-2/3 flex m-auto'>
         {food?.map((foo)=>{
           return (
             <div className='w-56' key={foo.id}>
@@ -49,7 +42,13 @@ function App() {
             </div>
         )
         })}
-      </div>
+      </div> */}
+      <Routes>
+        <Route path='/' element={<Home 
+            food={food}
+
+        />} />
+      </Routes>
     </>
   )
 }
